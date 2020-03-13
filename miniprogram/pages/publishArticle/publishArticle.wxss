@@ -1,0 +1,12 @@
+.formItem{
+  display: flex;
+  margin: 40rpx 20rpx;
+}
+.formItem-label{
+  font-size: 30rpx;
+  flex-shrink: 0;
+}
+.formItem-input{
+  border: 1px solid #ccc;
+  margin-left: 20rpx;
+}

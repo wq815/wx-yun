@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<view class="container" wx:if='{{isLogin}}'>
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <view class='userinfo-left'>
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+      <text class='userinfo-articles'>已签到天数：{{ countSingIn }}</text>
+    </view>
+    <navigator url='../publishArticle/publishArticle' class='userinfo-publish'>签到</navigator>
+    <navigator url='../canvasTest/canvasTest' class='userinfo-publish'>记账</navigator>
+  </view>
+  <scroll-view scroll-y class='scrollView'>
+    <view wx:if='{{ !articlesList.length }}' class='scrollView-item'>暂无文章</view>
+    <view wx:for='{{articlesList}}' wx:key='index' class='scrollView-item'>
+      <text class='scrollView-itemContent'>{{ item.content }}</text>
+      <text class='scrollView-itemNickName'>{{ item.userName }}</text>
+      <text class='scrollView-itemCreateTime'>于 {{ item.createTime }} 发布该签到</text>
+    </view>
+  </scroll-view>
+
+  <!-- 上传图片 -->
+  <!-- <view class="uploader">
+    <view class="uploader-text" bindtap="doUpload">
+      <text>上传图片</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view>
+  </view> -->
+
+
+  <!-- 操作数据库 -->
+  <!-- <view class="uploader">
+    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
+      <text>前端操作数据库</text>
+    </navigator>
+  </view> -->
+
+
+  <!-- 新建云函数 -->
+  <!-- <view class="uploader">
+    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
+      <text>快速新建云函数</text>
+    </navigator>
+  </view> -->
+
+</view>
+<view wx:if="{{!isLogin && canIUse}}" class='container-button'>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 请先授权获取信息 </button>
+</view>

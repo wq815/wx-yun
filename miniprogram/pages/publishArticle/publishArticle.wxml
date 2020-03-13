@@ -1,0 +1,12 @@
+<view class='publishArticle'>
+  <view class='formItem'>
+    <text class='formItem-label'>{{ nowDate }}</text>
+  </view>
+  <view class='formItem'>
+    <text class='formItem-label'>心情：</text>
+    <textarea class='formItem-input' bindinput='inputEditContent' data-name='content' value='{{ content }}'></textarea>
+  </view>
+  <view>
+    <button bindtap='submitArticle'>签到</button>
+  </view>
+</view>
